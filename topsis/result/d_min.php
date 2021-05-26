@@ -40,6 +40,5 @@
 				<?php endforeach ?>
 			</tr>
 		<?php endforeach ?>
-		<?= print_r($arr); ?>
 	</tbody>
 </table>

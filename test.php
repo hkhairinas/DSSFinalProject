@@ -1,11 +1,12 @@
 <?php 
 include 'header.php';
-$kt = getKriteria();
-foreach ($kt as $key => $value) {
-	if($value['atribut'] == "Cost"){
-		echo "COST!<br>";
-	} else {
-		echo "Bukan COST!<br>";
-	}
+$cek = MaxNormal();
+$mCek = MinNormal();
+foreach ($cek as $key => $value) {
+	echo $value['nilai'];
+}
+
+foreach ($mCek as $key => $value) {
+	echo $value['nilai']."-";
 }
 ?>

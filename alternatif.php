@@ -65,15 +65,17 @@
 	
 		</tbody>
 		<tfoot class="full-width">
+			<?php if(getJumlahAlternatif() < 3){ ?>
 			<tr>
 				<th colspan="3">
 					<a href="tambah.php?jenis=alternatif">
-						<div class="ui right floated small primary labeled icon button">
+						<div class="ui right floated small primary labeled icon button hidden">
 						<i class="plus icon"></i>Tambah
 						</div>
 					</a>
 				</th>
 			</tr>
+			<?php } ?>
 		</tfoot>
 	</table>
 

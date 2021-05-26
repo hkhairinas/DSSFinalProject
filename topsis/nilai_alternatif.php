@@ -42,6 +42,12 @@ $a = $_GET['a'];
 				<button type="submit" name="edit" class="ui mini teal left labeled icon button" onclick="return confirm('Yakin akan Mengedit Data <?= getAlternatifNama($a-1) ?> ?')"><i class="right edit icon"></i>EDIT</button>
 				<button type="submit" name="delete" class="ui mini red left labeled icon button" onclick="return confirm('Yakin Akan Menghapus Data <?= getAlternatifNama($a-1) ?> ?')"><i class="right remove icon"></i>DELETE</button>
 			</form>
+			<a href="<?php echo "tambah_nilai.php?a=".($a + 1)?>">
+			<button class="ui right labeled icon button" style="float: right;">
+				<i class="right arrow icon"></i>
+				Lanjut
+			</button>
+			</a>
 	</div>
 </section>
 <?php include '../footer.php'; ?>

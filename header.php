@@ -9,7 +9,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>SPK menggunakan metode AHP</title>
+	<title>SPK Metode AHP x TOPSIS</title>
 	<!-- css -->
 	<link rel="stylesheet" type="text/css" href="<?= base_url("assets/css/style.css")?>">
 	<link rel="stylesheet" type="text/css" href="<?= base_url("assets/css/w3.css")?>">

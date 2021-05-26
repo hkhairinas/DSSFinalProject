@@ -34,7 +34,6 @@
 				<th class="collapsing">No</th>
 				<th>Nama Kriteria</th>
 				<th>Atribut</th>
-				<th>Tools</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -52,13 +51,6 @@
 				<td><?php echo $i ?></td>
 				<td><?php echo $row['nama'] ?></td>
 				<td><?= $row['atribut'] ?></td>
-				<td class="right aligned collapsing">
-					<form method="post" action="kriteria.php">
-						<input type="hidden" name="id" value="<?php echo $row['id'] ?>">
-						<button type="submit" name="edit" class="ui mini teal left labeled icon button"><i class="right edit icon"></i>EDIT</button>
-						<button type="submit" name="delete" class="ui mini red left labeled icon button"><i class="right remove icon"></i>DELETE</button>
-					</form>
-				</td>
 			</tr>
 		
 
@@ -66,17 +58,6 @@
 
 
 		</tbody>
-		<tfoot class="full-width">
-			<tr>
-				<th colspan="4">
-					<a href="tambah.php?jenis=kriteria">
-						<div class="ui right floated small primary labeled icon button">
-						<i class="plus icon"></i>Tambah
-						</div>
-					</a>
-				</th>
-			</tr>
-		</tfoot>
 	</table>
 
 	<br>
