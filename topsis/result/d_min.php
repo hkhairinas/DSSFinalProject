@@ -1,8 +1,9 @@
 <table class="ui celled selectable center aligned table">
 	<thead>
 		<tr>
-			<th rowspan="2">R</th>
+			<th rowspan="2">Di-</th>
 			<th colspan="<?= getJumlahKriteria() ?>">Kriteria</th>
+			<th rowspan="2">Total</th>
 		</tr>
 		<tr>
 			<?php foreach ($kt as $key => $value): ?>
@@ -19,25 +20,29 @@
 				$arr = array();
 				$sqrt = squareRoot();
 				$kriteria = getKriteriaNilai($val['id']); 
+				$hasil = 0;
 				?>
 				<?php foreach ($kriteria as $key => $nilai): 
-					if(
-						$nilai['atribut'] == 'Cost'){ 
+					$pv = getKriteriaPV($nilai['id_kriteria']);
+					if($nilai['atribut'] == 'Cost'){ 
 						$n = getDataMax($nilai['id_kriteria']); 
-						$result = $nilai['nilai']/$sqrt[$key];
+						$result = $nilai['nilai']/$sqrt[$key]*$pv;
 						$hsl = pow($result - $n,2);
-						array_push($arr,$hsl);
+						$hasil += $hsl;
 					} else {  
 						$n = getDataMin($nilai['id_kriteria']); 
-						$result = $nilai['nilai']/$sqrt[$key];
+						$result = $nilai['nilai']/$sqrt[$key]*$pv;
 						$hsl = pow($result - $n,2);
-						array_push($arr,$hsl);
+						$hasil += $hsl;
 					}
 				?>
 				<td>
 					<?= round($hsl, 6) ?>	
 				</td>
 				<?php endforeach ?>
+				<td>
+					<?= round(sqrt($hasil), 6); insertSMin($nilai['id_alter'], sqrt($hasil));?>
+				</td>
 			</tr>
 		<?php endforeach ?>
 	</tbody>

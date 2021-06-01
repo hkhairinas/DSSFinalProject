@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 26, 2021 at 06:54 PM
+-- Generation Time: Jun 01, 2021 at 05:47 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -114,21 +114,21 @@ CREATE TABLE `normalisasi` (
 --
 
 INSERT INTO `normalisasi` (`id`, `id_alternatif`, `id_kriteria`, `nilai`) VALUES
-(22, 21, 34, 0.235216),
-(23, 21, 35, 0.11841),
-(24, 21, 38, 0.110751),
-(25, 21, 39, 0.075),
-(26, 21, 40, 0.0366353),
-(27, 23, 34, 0.238576),
-(28, 23, 35, 0.121196),
-(29, 23, 38, 0.10956),
-(30, 23, 39, 0.0785715),
-(31, 23, 40, 0.0362653),
-(32, 28, 34, 0.235888),
-(33, 28, 35, 0.117017),
-(34, 28, 38, 0.111942),
-(35, 28, 39, 0.0714286),
-(36, 28, 40, 0.0370054);
+(22, 21, 34, 0.23151),
+(23, 21, 35, 0.135101),
+(24, 21, 38, 0.0972879),
+(25, 21, 39, 0.0749296),
+(26, 21, 40, 0.0365886),
+(27, 23, 34, 0.234817),
+(28, 23, 35, 0.13828),
+(29, 23, 38, 0.0962417),
+(30, 23, 39, 0.0784977),
+(31, 23, 40, 0.036219),
+(32, 28, 34, 0.232171),
+(33, 28, 35, 0.133511),
+(34, 28, 38, 0.098334),
+(35, 28, 39, 0.0713616),
+(36, 28, 40, 0.0369582);
 
 -- --------------------------------------------------------
 
@@ -183,16 +183,16 @@ CREATE TABLE `perbandingan_kriteria` (
 --
 
 INSERT INTO `perbandingan_kriteria` (`id`, `kriteria1`, `kriteria2`, `nilai`) VALUES
-(12, 34, 39, 3),
-(11, 34, 38, 3),
-(10, 34, 35, 2),
-(13, 34, 40, 5),
-(14, 35, 38, 1),
-(15, 35, 39, 2),
-(16, 35, 40, 3),
-(17, 38, 39, 2),
-(18, 38, 40, 3),
-(19, 39, 40, 3);
+(29, 39, 40, 3),
+(28, 38, 40, 3),
+(27, 38, 39, 2),
+(26, 35, 40, 3),
+(25, 35, 39, 2),
+(24, 35, 38, 2),
+(23, 34, 40, 5),
+(22, 34, 39, 3),
+(21, 34, 38, 3),
+(20, 34, 35, 2);
 
 -- --------------------------------------------------------
 
@@ -244,11 +244,11 @@ CREATE TABLE `pv_kriteria` (
 --
 
 INSERT INTO `pv_kriteria` (`id_kriteria`, `nilai`) VALUES
-(38, 0.191834),
-(35, 0.205919),
-(34, 0.408789),
-(39, 0.130002),
-(40, 0.0634564);
+(40, 0.0633755),
+(39, 0.12988),
+(38, 0.168514),
+(35, 0.234944),
+(34, 0.403286);
 
 -- --------------------------------------------------------
 
@@ -281,7 +281,7 @@ CREATE TABLE `topsis` (
   `id_alter` int(11) NOT NULL,
   `id_kriteria` int(11) NOT NULL,
   `nilai` float NOT NULL,
-  `pangkat` bigint(11) NOT NULL
+  `pangkat` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -289,21 +289,43 @@ CREATE TABLE `topsis` (
 --
 
 INSERT INTO `topsis` (`id`, `id_alter`, `id_kriteria`, `nilai`, `pangkat`) VALUES
-(71, 21, 34, 3.5, 12),
-(72, 21, 35, 85, 7225),
-(73, 21, 38, 4650000, 21622500000000),
-(74, 21, 39, 21, 441),
-(75, 21, 40, 99, 9801),
-(76, 23, 34, 3.55, 13),
-(77, 23, 35, 87, 7569),
-(78, 23, 38, 4600000, 21160000000000),
-(79, 23, 39, 22, 484),
-(80, 23, 40, 98, 9604),
-(81, 28, 34, 3.51, 12),
-(82, 28, 35, 84, 7056),
-(83, 28, 38, 4700000, 22090000000000),
-(84, 28, 39, 20, 400),
-(85, 28, 40, 100, 10000);
+(86, 21, 34, 3.5, 12.25),
+(87, 21, 35, 85, 7225),
+(88, 21, 38, 4650000, 21622500000000),
+(89, 21, 39, 21, 441),
+(90, 21, 40, 99, 9801),
+(91, 23, 34, 3.55, 12.6025),
+(92, 23, 35, 87, 7569),
+(93, 23, 38, 4600000, 21160000000000),
+(94, 23, 39, 22, 484),
+(95, 23, 40, 98, 9604),
+(96, 28, 34, 3.51, 12.3201),
+(97, 28, 35, 84, 7056),
+(98, 28, 38, 4700000, 22090000000000),
+(99, 28, 39, 20, 400),
+(100, 28, 40, 100, 10000);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `topsis_rank`
+--
+
+CREATE TABLE `topsis_rank` (
+  `id` int(11) NOT NULL,
+  `id_alternatif` int(11) NOT NULL,
+  `max` float NOT NULL,
+  `min` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `topsis_rank`
+--
+
+INSERT INTO `topsis_rank` (`id`, `id_alternatif`, `max`, `min`) VALUES
+(19, 21, 0.00591663, 0.00406067),
+(20, 23, 0.000000545408, 0.00946176),
+(21, 28, 0.00925139, 0.000661439);
 
 --
 -- Indexes for dumped tables
@@ -370,6 +392,12 @@ ALTER TABLE `topsis`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `topsis_rank`
+--
+ALTER TABLE `topsis_rank`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -401,7 +429,7 @@ ALTER TABLE `perbandingan_alternatif`
 -- AUTO_INCREMENT for table `perbandingan_kriteria`
 --
 ALTER TABLE `perbandingan_kriteria`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `pv_alternatif`
@@ -413,7 +441,13 @@ ALTER TABLE `pv_alternatif`
 -- AUTO_INCREMENT for table `topsis`
 --
 ALTER TABLE `topsis`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
+
+--
+-- AUTO_INCREMENT for table `topsis_rank`
+--
+ALTER TABLE `topsis_rank`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

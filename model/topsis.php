@@ -157,4 +157,54 @@ function squareRoot(){
 	return $sqrt;
 }
 
+function insertSPlus($id_a, $nilai){
+	$cek = "SELECT * FROM topsis_rank WHERE id_alternatif = $id_a";
+	$result = mysqli_query($GLOBALS['conn'], $cek);
+	if (!mysqli_num_rows($result)>0) {
+		$query = "INSERT INTO topsis_rank (id_alternatif, max) VALUES ('$id_a', '$nilai')";
+		$result = mysqli_query($GLOBALS['conn'], $query);
+		if (!$result) {
+			echo "Data Gagal Dimasukkan";
+		}
+	}
+	else {
+		$query = "UPDATE topsis_rank SET id_alternatif = $id_a, max = $nilai WHERE id_alternatif = '$id_a'";
+		$result = mysqli_query($GLOBALS['conn'], $query);
+		if (!$result) {
+			echo "Data Gagal DiUpdate";
+		}
+	}
+}
+
+function insertSMin($id_a, $nilai){
+	$cek = "SELECT * FROM topsis_rank WHERE id_alternatif = $id_a";
+	$result = mysqli_query($GLOBALS['conn'], $cek);
+	if (!mysqli_num_rows($result)>0) {
+		$query = "INSERT INTO topsis_rank (id_alternatif, min) VALUES ('$id_a', '$nilai')";
+		$result = mysqli_query($GLOBALS['conn'], $query);
+		if (!$result) {
+			echo "Data Gagal Dimasukkan";
+		}
+	}
+	else {
+		$query = "UPDATE topsis_rank SET id_alternatif = $id_a, min = $nilai WHERE id_alternatif = '$id_a'";
+		$result = mysqli_query($GLOBALS['conn'], $query);
+		if (!$result) {
+			echo "Data Gagal DiUpdate";
+		}
+	}
+}
+
+function hitungSolusi(){
+	$arr = array();
+	$hasil = 0;
+	$solusi = "SELECT max, min FROM topsis_rank";
+	$result = mysqli_query($GLOBALS['conn'], $solusi);
+	foreach ($result as $key => $value) {
+		$hasil = $value['min'] / ($value['max'] + $value['min']);
+		array_push($arr, $hasil);
+	}
+	return $arr;
+}
+
 ?>

@@ -1,12 +1,7 @@
 <?php 
-include 'header.php';
-$cek = MaxNormal();
-$mCek = MinNormal();
-foreach ($cek as $key => $value) {
-	echo $value['nilai'];
-}
+include 'header.php'; 
+$al = getAlternatif();
+$kt = getKriteria();
 
-foreach ($mCek as $key => $value) {
-	echo $value['nilai']."-";
-}
+print_r(squareRoot());
 ?>
